@@ -1,24 +1,142 @@
-#!/usr/bin/env bash -ex
+#!/usr/bin/env bash
+# This file:
+#
+#  - Bootstraps a Mac (change this for your script)
+#
+# Usage:
+#
+#  sh ./install.sh 2>&1 | tee ./laptop.log
+#
+# Based on a template by BASH3 Boilerplate v2.3.0
+# http://bash3boilerplate.sh/#authors
 
-echo "Setting up $(whoami)'s Mac..."
+# Exit on error. Append "|| true" if you expect an error.
+set -o errexit
+# Exit on error inside any functions or subshells.
+set -o errtrace
+# Do not allow use of undefined vars. Use ${VAR:-} to use an undefined VAR
+set -o nounset
+# Catch the error in case mysqldump fails (but gzip succeeds) in `mysqldump |gzip`
+set -o pipefail
+# Turn on traces, useful while debugging but commented out by default
+# set -o xtrace
+
+# https://github.com/thoughtbot/laptop/blob/581e50e6a978c5b2d2c68134541437b02d6108d5/mac#L7
+fancy_echo() {
+  local fmt="$1"; shift
+
+  # shellcheck disable=SC2059
+  printf "\\n==> $fmt\\n" "$@"
+}
+
+
+# Set up this Mac
+fancy_echo "Setting up $(whoami)'s Mac…"
+
 
 # Check for Homebrew and install if we don't have it
-# http://brew.sh/
-if test ! $(which brew); then
+fancy_echo "Ensure Homebrew is installed…"
+if test ! "$(command -v brew)"; then
+  fancy_echo "Homebrew (http://brew.sh/) is not installed! 👎"
+  fancy_echo "Installing Homebrew"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+  fancy_echo "✅"
 fi
 
-# Update Homebrew and install all dependencies using Homebew Bundle
+
+# Update Homebrew
 # https://github.com/Homebrew/homebrew-bundle
+fancy_echo "Updating Homebrew…"
 brew update
-brew tap homebrew/bundle
-brew bundle
 
-# Make ZSH the default shell environment
-chsh -s $(which zsh)
 
-# Check for Node Version Manager and install if we don't have it
-# https://github.com/creationix/nvm
-if test ! $(which nvm); then
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+# Install all dependencies using Homebew Bundle
+# https://github.com/Homebrew/homebrew-bundle
+fancy_echo "Install all dependencies using Homebew Bundle…"
+brew bundle --file=- <<EOF
+tap "caskroom/cask"
+tap "caskroom/cask-drivers"
+tap "caskroom/cask-fonts"
+tap "heroku/brew"
+tap "homebrew/services"
+
+brew "dos2unix"
+brew "git"
+brew "heroku"
+brew "htop"
+brew "imagemagick"
+brew "jdupes"
+brew "jq"
+brew "mailhog", restart_service: :changed
+brew "msmtp"
+brew "nginx", restart_service: :changed
+brew "node"
+brew "openssl"
+brew "pipenv"
+brew "postgres", restart_service: :changed
+brew "pyenv"
+brew "python"
+brew "redis", restart_service: :changed
+brew "sqlite"
+brew "supervisor", restart_service: :changed
+brew "tmux"
+brew "tree"
+brew "vim"
+brew "yarn"
+brew "zlib"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+brew "zsh"
+
+cask "1password"
+cask "balenaetcher"
+cask "bitbar"
+cask "db-browser-for-sqlite"
+cask "docker"
+cask "dropbox"
+cask "google-backup-and-sync"
+cask "google-chrome"
+cask "iterm2"
+cask "keybase"
+cask "ngrok"
+cask "openscad"
+cask "philips-hue-sync"
+cask "poedit"
+cask "postgres"
+cask "postico"
+cask "qubibox"
+cask "redis-app"
+cask "rowanj-gitx"
+cask "signal"
+cask "soundcleod"
+cask "spectacle"
+cask "spotify"
+cask "synology-drive"
+cask "synology-surveillance-station-client"
+cask "ultimaker-cura"
+cask "visual-studio-code"
+cask "vlc"
+cask "vnc-viewer"
+EOF
+fancy_echo "✅"
+
+
+# Cleanup Homebrew
+fancy_echo "Run brew cleanup…"
+brew cleanup || true
+fancy_echo "✅"
+
+
+# Ensure ZSH
+fancy_echo "Ensure your shell is Z shell (Zsh)…"
+if [ "$(command -v zsh)" != '/usr/local/bin/zsh' ] ; then
+  fancy_echo "Changing your shell to zsh…"
+  chsh -s "$(command -v zsh)" "$USER"
+else
+    fancy_echo "✅"
 fi
+
+
+# All done!
+fancy_echo "Done! 🍻"
