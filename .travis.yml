@@ -1,0 +1,12 @@
+os: osx
+addons:
+  homebrew:
+    packages:
+    - shellcheck
+    update: true
+jobs:
+  include:
+    - stage: lint
+      script: shellcheck mac -e SC2039
+    - stage: mac
+      script: sh mac
