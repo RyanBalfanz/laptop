@@ -1,26 +1,49 @@
-# Ryan's Laptop
+Laptop
+======
 
-## What Is This?
+Laptop is a script to set up a macOS laptop for web and mobile development.
 
-This repository serves as my way to help me setup and maintain my Mac.
+It can be run multiple times on the same machine safely.
+It installs, upgrades, or skips packages
+based on what is already installed on the machine.
 
-## A Fresh macOS Setup
+Install
+-------
 
-Follow these install instructions to setup a new Mac.
+Download the script:
 
-1. Update macOS to the latest version with the App Store
-<!-- 2. Install Xcode from the App Store, open it and accept the license agreement -->
-3. Install macOS Command Line Tools by running `xcode-select --install`
-<!-- 4. Copy public and private SSH keys to `~/.ssh` and make sure they're set to `600` -->
-5. Clone this repo to `~/.dotfiles`
-6. Append `/usr/local/bin/zsh` to the end of your `/etc/shells` file
-7. Run `install.sh` to start the installation
-8. Make sure Dropbox is set up and synced
-<!-- 9. Restore preferences by running `mackup restore` -->
-10. Restart your computer to finalize the process
+```sh
+curl --remote-name https://raw.githubusercontent.com/ryanbalfanz/laptop/master/mac
+```
 
-Your Mac is now ready to use!
+Review the script (avoid running scripts you haven't read!):
 
-## Thanks To...
+```sh
+less mac
+```
 
-I finally put something in this project after looking at [Dries's Dotfiles](https://github.com/driesvints/dotfiles) and admiring it's simplicity.
+Execute the downloaded script:
+
+```sh
+sh mac 2>&1 | tee ~/laptop.log
+```
+
+Optionally, review the log:
+
+```sh
+less ~/laptop.log
+```
+
+Miscellaneous
+-------------
+
+- Update macOS to the latest version with the App Store
+- Install Xcode from the App Store, open it and accept the license agreement
+- Install macOS Command Line Tools by running `xcode-select --install`
+- Generate a new SSH Key (https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- Append `/usr/local/bin/zsh` to the end of your `/etc/shells` file
+
+See also:
+- [Dries's Dotfiles](https://github.com/driesvints/dotfiles) 
+- https://github.com/thoughtbot/laptop
+- http://bash3boilerplate.sh/
