@@ -84,7 +84,7 @@ brew "msmtp"
 brew "nginx", restart_service: :changed
 brew "node"
 # brew "openssl"
-brew "pipenv"
+# brew "pipenv"
 brew "postgres", restart_service: :changed
 brew "pyenv"
 # brew "python"
