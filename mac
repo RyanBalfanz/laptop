@@ -70,7 +70,7 @@ run_brew_bundle() {
 
 brew "dos2unix"
 brew "git"
-brew "heroku"
+brew "heroku/brew/heroku"
 brew "htop"
 brew "imagemagick"
 brew "jdupes"
