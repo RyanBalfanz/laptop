@@ -14,7 +14,13 @@ jobs:
     #   script: shellcheck mac -e SC2039
     # - stage: mac
     #   script: sh mac
-    # - stage: docs
-    #   script: pipenv run mkdocs build
-    - stage: docs_deploy
-      script: pipenv run mkdocs gh-deploy
+    - stage: docs_build
+      script: pipenv run mkdocs build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: false
+  local_dir: site
+  on:
+    branch: master
