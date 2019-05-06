@@ -66,11 +66,7 @@ run_brew_update() {
 run_brew_bundle() {
   fancy_echo "Install all dependencies using Homebew Bundle…"
   brew bundle --file=- <<EOF
-tap "caskroom/cask"
-tap "caskroom/cask-drivers"
-tap "caskroom/cask-fonts"
-tap "heroku/brew"
-tap "homebrew/services"
+# tap "sambadevi/powerlevel9k"
 
 brew "dos2unix"
 brew "git"
