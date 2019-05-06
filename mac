@@ -79,13 +79,12 @@ brew "mailhog", restart_service: :changed
 brew "msmtp"
 brew "nginx", restart_service: :changed
 brew "node"
-# brew "openssl"
-# brew "pipenv"
+brew "openssl"
+brew "pipenv"
 brew "postgres", restart_service: :changed
 brew "pyenv"
-# brew "python"
 brew "redis", restart_service: :changed
-# brew "sqlite"
+brew "sqlite"
 brew "supervisor", restart_service: :changed
 brew "tmux"
 brew "tree"
