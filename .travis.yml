@@ -8,13 +8,9 @@ addons:
     - pipenv
     - shellcheck
     update: false
-jobs:
-  include:
-    - stage: lint
-      script: shellcheck mac -e SC2039
-    - stage: mac
-      script: sh mac
-before_deploy: pipenv run mkdocs build
+before_script: shellcheck mac -e SC2039
+script: sh mac
+after_success: pipenv run mkdocs build
 deploy:
   provider: pages
   skip_cleanup: true
