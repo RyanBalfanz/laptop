@@ -19,7 +19,8 @@ See the [documentation] for usage details. [Is curl|bash insecure?] is a suggest
 - Update macOS to the latest version with the App Store
 - Install Xcode from the App Store, open it and accept the license agreement
 - Install macOS Command Line Tools by running `xcode-select --install`
-- Generate a new SSH Key (https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- [Generating a new SSH key and adding it to the ssh-agent
+](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 - Append `/usr/local/bin/zsh` to the end of your `/etc/shells` file
 
 ## License
