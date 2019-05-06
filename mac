@@ -68,47 +68,53 @@ run_brew_bundle() {
   brew bundle --file=- <<EOF
 # tap "sambadevi/powerlevel9k"
 
-brew "dos2unix"
+# Minimal
+# -------
+
 brew "git"
-brew "heroku/brew/heroku"
 brew "htop"
-brew "imagemagick"
-brew "jdupes"
-brew "jq"
-brew "mailhog", restart_service: :changed
-brew "msmtp"
-brew "nginx", restart_service: :changed
-brew "node"
 brew "openssl"
-brew "pipenv"
-brew "postgres", restart_service: :changed
-brew "pyenv"
-brew "redis", restart_service: :changed
-# brew "sqlite"
-brew "supervisor", restart_service: :changed
 brew "tmux"
 brew "tree"
 brew "vim"
-brew "yarn"
-brew "zlib"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 brew "zsh"
 
+# Optional
+# --------
+
+# brew "dos2unix"
+# brew "heroku/brew/heroku"
+# brew "imagemagick"
+# brew "jdupes"
+# brew "jq"
+# brew "mailhog", restart_service: :changed
+# brew "msmtp"
+# brew "nginx", restart_service: :changed
+# brew "node"
+# brew "pipenv"
+# brew "postgres", restart_service: :changed
+# brew "pyenv"
+# brew "redis", restart_service: :changed
+# brew "sqlite"
+# brew "supervisor", restart_service: :changed
+# brew "yarn"
+# brew "zlib"
+
 # Minimal
 # -------
+
 cask "1password"
 cask "dropbox"
 cask "google-backup-and-sync"
 cask "google-chrome"
 cask "iterm2"
-cask "rowanj-gitx"
 cask "spectacle"
-cask "spotify"
-cask "visual-studio-code"
 
 # Optional
 # --------
+
 # cask "balenaetcher"
 # cask "bitbar"
 # cask "db-browser-for-sqlite"
@@ -122,9 +128,12 @@ cask "visual-studio-code"
 # cask "postico"
 # cask "qubibox"
 # cask "redis"
+# cask "rowanj-gitx"
 # cask "signal"
 # cask "soundcleod"
+# cask "spotify"
 # cask "ultimaker-cura"
+# cask "visual-studio-code"
 # cask "vlc"
 # cask "vnc-viewer"
 
