@@ -1,18 +1,21 @@
+# RyanBalfanz/laptop
+
+A shell script to set up a macOS laptop for web and mobile development.
+
 [![Build Status](https://travis-ci.org/RyanBalfanz/laptop.svg?branch=master)](https://travis-ci.org/RyanBalfanz/laptop)
 
 ---
 
+## Usage
 
-# Installation
-
-Download a copy of the installation script to run. You can read it first if you would like.
+Download the script and run it – read it first if you like.
 
 - `curl --remote-name https://raw.githubusercontent.com/ryanbalfanz/laptop/master/mac`
 - `less mac`
 - `sh mac 2>&1 | tee laptop.log`
 
-Alternatively, you can use a `curl|bash` one-liner if you choose to avoid reading the script.
+Alternatively, use this `curl|bash` one-liner if you do not care to examine or modify the script.
 
-```
+```shell
 curl --remote-name https://raw.githubusercontent.com/ryanbalfanz/laptop/master/mac | sh mac 2>&1 | tee laptop.log
 ```

@@ -1,6 +1,6 @@
 # Laptop
 
-**Documentation**: [https://ryanbalfanz.github.io/laptop/](https://ryanbalfanz.github.io/laptop/)
+**Documentation**: [https://github.com/thoughtbot/laptop/][documentation]
 
 [![Build Status](https://travis-ci.org/RyanBalfanz/laptop.svg?branch=master)](https://travis-ci.org/RyanBalfanz/laptop)
 
@@ -10,31 +10,9 @@ It can be run multiple times on the same machine safely.
 It installs, upgrades, or skips packages
 based on what is already installed on the machine.
 
-## Installation
+## Usage
 
-Download the script:
-
-```sh
-curl --remote-name https://raw.githubusercontent.com/ryanbalfanz/laptop/master/mac
-```
-
-Review the script (avoid running scripts you haven't read!):
-
-```sh
-less mac
-```
-
-Execute the downloaded script:
-
-```sh
-sh mac 2>&1 | tee ~/laptop.log
-```
-
-Optionally, review the log:
-
-```sh
-less ~/laptop.log
-```
+See the [documentation] for usage details. [Is curl|bash insecure?] is a suggested pre-read.
 
 ## Miscellaneous
 
@@ -44,10 +22,21 @@ less ~/laptop.log
 - Generate a new SSH Key (https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 - Append `/usr/local/bin/zsh` to the end of your `/etc/shells` file
 
-See also:
-- [Dries's Dotfiles](https://github.com/driesvints/dotfiles) 
-- https://github.com/thoughtbot/laptop
-- http://bash3boilerplate.sh/
-- https://gist.github.com/btm/6700524
-- https://news.ycombinator.com/item?id=12766049
-- https://sandstorm.io/news/2015-09-24-is-curl-bash-insecure-pgp-verified-install
+## License
+
+See the [LICENSE] file.
+
+[LICENSE]: LICENSE
+
+## References
+
+- [Dries's Dotfiles](https://github.com/driesvints/dotfiles)
+- <https://github.com/thoughtbot/laptop>
+- [BASH3 Boilerplate](http://bash3boilerplate.sh/)
+- [Is curl|bash insecure?](https://sandstorm.io/news/2015-09-24-is-curl-bash-insecure-pgp-verified-install
+)
+  - <https://gist.github.com/btm/6700524>
+  - <https://news.ycombinator.com/item?id=12766049>
+
+[documentation]: https://ryanbalfanz.github.io/laptop/
+[Is curl|bash insecure?]: https://sandstorm.io/news/2015-09-24-is-curl-bash-insecure-pgp-verified-install
