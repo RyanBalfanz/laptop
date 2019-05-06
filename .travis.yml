@@ -1,12 +1,11 @@
 os: osx
 osx_image: xcode10.2
-install:
-  - pipenv --three install --deploy --dev
+install: pipenv --three install --deploy --dev
 addons:
   homebrew:
     packages:
-    - pipenv
-    - shellcheck
+      - pipenv
+      - shellcheck
     update: true
 before_script: shellcheck mac -e SC2039
 script: sh mac
