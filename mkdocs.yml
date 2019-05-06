@@ -1,0 +1,16 @@
+site_name: RyanBalfanz/laptop
+site_description: An easy to use Mac bootstrap script.
+
+theme:
+    name: 'material'
+
+repo_name: ryanbalfanz/laptop
+repo_url: https://github.com/ryanbalfanz/laptop
+edit_uri: ""
+
+nav:
+    - Introduction: 'index.md'
+
+markdown_extensions:
+  - markdown.extensions.codehilite:
+      guess_lang: false
