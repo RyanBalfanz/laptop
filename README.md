@@ -1,5 +1,6 @@
-Laptop
-======
+# Laptop
+
+**Documentation**: [https://ryanbalfanz.github.com/laptop](https://ryanbalfanz.github.com/laptop)
 
 [![Build Status](https://travis-ci.org/RyanBalfanz/laptop.svg?branch=master)](https://travis-ci.org/RyanBalfanz/laptop)
 
@@ -9,8 +10,7 @@ It can be run multiple times on the same machine safely.
 It installs, upgrades, or skips packages
 based on what is already installed on the machine.
 
-Install
--------
+## Installation
 
 Download the script:
 
@@ -36,8 +36,7 @@ Optionally, review the log:
 less ~/laptop.log
 ```
 
-Miscellaneous
--------------
+## Miscellaneous
 
 - Update macOS to the latest version with the App Store
 - Install Xcode from the App Store, open it and accept the license agreement
