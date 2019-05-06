@@ -10,6 +10,12 @@
 # Based on a template by BASH3 Boilerplate v2.3.0
 # http://bash3boilerplate.sh/#authors
 
+# We wrap the entire script in a big function which we only call at the very end, in order to
+# protect against the possibility of the connection dying mid-script. This protects us against
+# the problem described in this blog post:
+#   http://blog.existentialize.com/dont-pipe-to-your-shell.html
+_() {
+
 # Exit on error. Append "|| true" if you expect an error.
 set -o errexit
 # Exit on error inside any functions or subshells.
@@ -35,26 +41,31 @@ fancy_echo "Setting up $(whoami)'s Mac…"
 
 
 # Check for Homebrew and install if we don't have it
-fancy_echo "Ensure Homebrew is installed…"
-if test ! "$(command -v brew)"; then
-  fancy_echo "Homebrew (http://brew.sh/) is not installed! 👎"
-  fancy_echo "Installing Homebrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-  fancy_echo "✅"
-fi
+ensure_homebrew() {
+  fancy_echo "Ensure Homebrew is installed…"
+  if test ! "$(command -v brew)"; then
+    fancy_echo "Homebrew (http://brew.sh/) is not installed! 👎"
+    fancy_echo "Installing Homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  else
+    fancy_echo "✅"
+  fi
+}
 
 
 # Update Homebrew
 # https://github.com/Homebrew/homebrew-bundle
-fancy_echo "Updating Homebrew…"
-brew update
+run_brew_update() {
+  fancy_echo "Updating Homebrew…"
+  brew update
+}
 
 
 # Install all dependencies using Homebew Bundle
 # https://github.com/Homebrew/homebrew-bundle
-fancy_echo "Install all dependencies using Homebew Bundle…"
-brew bundle --file=- <<EOF
+run_brew_bundle() {
+  fancy_echo "Install all dependencies using Homebew Bundle…"
+  brew bundle --file=- <<EOF
 tap "caskroom/cask"
 tap "caskroom/cask-drivers"
 tap "caskroom/cask-fonts"
@@ -72,13 +83,13 @@ brew "mailhog", restart_service: :changed
 brew "msmtp"
 brew "nginx", restart_service: :changed
 brew "node"
-brew "openssl"
+# brew "openssl"
 brew "pipenv"
 brew "postgres", restart_service: :changed
 brew "pyenv"
-brew "python"
+# brew "python"
 brew "redis", restart_service: :changed
-brew "sqlite"
+# brew "sqlite"
 brew "supervisor", restart_service: :changed
 brew "tmux"
 brew "tree"
@@ -106,7 +117,7 @@ cask "poedit"
 cask "postgres"
 cask "postico"
 cask "qubibox"
-cask "redis-app"
+# cask "redis-app"
 cask "rowanj-gitx"
 cask "signal"
 cask "soundcleod"
@@ -119,24 +130,45 @@ cask "visual-studio-code"
 cask "vlc"
 cask "vnc-viewer"
 EOF
-fancy_echo "✅"
+  fancy_echo "✅"
+}
 
 
 # Cleanup Homebrew
-fancy_echo "Run brew cleanup…"
-brew cleanup || true
-fancy_echo "✅"
+run_brew_cleanup() {
+  fancy_echo "Run brew cleanup…"
+  brew cleanup || true
+  fancy_echo "✅"
+}
 
 
 # Ensure ZSH
-fancy_echo "Ensure your shell is Z shell (Zsh)…"
-if [ "$(command -v zsh)" != '/usr/local/bin/zsh' ] ; then
-  fancy_echo "Changing your shell to zsh…"
-  chsh -s "$(command -v zsh)" "$USER"
-else
-    fancy_echo "✅"
-fi
+ensure_zshell() {
+  fancy_echo "Ensure your shell is Z shell (Zsh)…"
+  if [ "$(command -v zsh)" != '/usr/local/bin/zsh' ] ; then
+    fancy_echo "Changing your shell to zsh…"
+    chsh -s "$(command -v zsh)" "$USER"
+  else
+      fancy_echo "✅"
+  fi
+}
 
 
 # All done!
-fancy_echo "Done! 🍻"
+print_success() {
+  fancy_echo "Done! 🍻"
+}
+
+# Now that the steps exist as functions, run them in an order that
+# would result in a working install.
+# handle_args "$@"
+ensure_homebrew
+run_brew_update
+run_brew_bundle
+run_brew_cleanup
+ensure_zshell
+print_success
+}
+
+# Now that we know the whole script has downloaded, run it.
+_ "$0" "$@"
