@@ -1,6 +1,6 @@
 # Laptop
 
-**Documentation**: [https://ryanbalfanz.github.com/laptop](https://ryanbalfanz.github.com/laptop)
+**Documentation**: [https://ryanbalfanz.github.io/laptop/](https://ryanbalfanz.github.io/laptop/)
 
 [![Build Status](https://travis-ci.org/RyanBalfanz/laptop.svg?branch=master)](https://travis-ci.org/RyanBalfanz/laptop)
 
