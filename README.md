@@ -49,4 +49,6 @@ See also:
 - [Dries's Dotfiles](https://github.com/driesvints/dotfiles) 
 - https://github.com/thoughtbot/laptop
 - http://bash3boilerplate.sh/
+- https://gist.github.com/btm/6700524
+- https://news.ycombinator.com/item?id=12766049
 - https://sandstorm.io/news/2015-09-24-is-curl-bash-insecure-pgp-verified-install
