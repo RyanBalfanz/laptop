@@ -61,10 +61,10 @@ run_brew_update() {
 }
 
 
-# Install all dependencies using Homebew Bundle
+# Installing Homebrew Packages
 # https://github.com/Homebrew/homebrew-bundle
 run_brew_bundle() {
-  fancy_echo "Install all dependencies using Homebew Bundle…"
+  fancy_echo "Installing Homebrew Packages…"
   brew bundle --file=- <<EOF
 # tap "sambadevi/powerlevel9k"
 
