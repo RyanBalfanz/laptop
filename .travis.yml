@@ -1,11 +1,10 @@
 os: osx
-before_install:
-  - pip install pipenv
 install:
   - pipenv --three install --deploy --dev
 addons:
   homebrew:
     packages:
+    - pipenv
     - shellcheck
     update: false
 jobs:
