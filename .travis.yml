@@ -1,12 +1,18 @@
 os: osx
+before_install:
+  - pip install pipenv
+install:
+  - pipenv install --system --deploy --dev
 addons:
   homebrew:
     packages:
     - shellcheck
-    update: true
+    update: false
 jobs:
   include:
     - stage: lint
       script: shellcheck mac -e SC2039
     - stage: mac
       script: sh mac
+    - stage: docs
+      script: pipenv run mkdocs build
