@@ -10,9 +10,11 @@ addons:
     update: false
 jobs:
   include:
-    - stage: lint
-      script: shellcheck mac -e SC2039
-    - stage: mac
-      script: sh mac
-    - stage: docs
-      script: pipenv run mkdocs build
+    # - stage: lint
+    #   script: shellcheck mac -e SC2039
+    # - stage: mac
+    #   script: sh mac
+    # - stage: docs
+    #   script: pipenv run mkdocs build
+    - stage: docs_deploy
+      script: pipenv run mkdocs gh-pages
