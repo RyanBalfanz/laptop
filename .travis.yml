@@ -2,7 +2,7 @@ os: osx
 before_install:
   - pip install pipenv
 install:
-  - pipenv install --system --deploy --dev
+  - pipenv install --deploy --dev
 addons:
   homebrew:
     packages:
