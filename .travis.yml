@@ -17,4 +17,4 @@ jobs:
     # - stage: docs
     #   script: pipenv run mkdocs build
     - stage: docs_deploy
-      script: pipenv run mkdocs gh-pages
+      script: pipenv run mkdocs gh-deploy
